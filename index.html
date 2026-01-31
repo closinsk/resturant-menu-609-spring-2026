@@ -1,503 +1,139 @@
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Juniper & Ember — Menu</title>
-  <style>
-    :root { --bg:#0f1115; --card:#161a22; --text:#eef2ff; --muted:#b8c0d8; --accent:#8be9fd; }
-    * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
-      background: radial-gradient(1200px 700px at 20% 10%, #1b2340 0%, var(--bg) 55%);
-      color: var(--text);
-      line-height: 1.5;
-    }
-    header {
-      padding: 3rem 1.25rem 1.5rem;
-      text-align: center;
-      max-width: 980px;
-      margin: 0 auto;
-    }
-    header h1 { margin: 0 0 .5rem; font-size: clamp(2rem, 5vw, 3rem); letter-spacing: .5px; }
-    header p { margin: 0 auto; max-width: 60ch; color: var(--muted); }
+<header class="menu-header">
+  <figure class="menu-hero">
+    <img
+      src="images/flour-hero-1200x400.jpg"
+      width="1200"
+      height="400"
+      alt="Flour bakery display with fresh pastries"
+      loading="lazy"
+    />
+  </figure>
 
-    main { max-width: 980px; margin: 0 auto; padding: 1rem 1.25rem 3rem; }
-    .hero {
-      display: grid;
-      grid-template-columns: 1.2fr .8fr;
-      gap: 1rem;
-      align-items: stretch;
-      margin: 1rem 0 1.5rem;
-    }
-    @media (max-width: 860px) {
-      .hero { grid-template-columns: 1fr; }
-    }
-    figure {
-      margin: 0;
-      border-radius: 18px;
-      overflow: hidden;
-      background: #0b0d12;
-      border: 1px solid rgba(255,255,255,.08);
-    }
-    figure img { width: 100%; height: 100%; object-fit: cover; display: block; }
-    figure figcaption { padding: .75rem 1rem; color: var(--muted); font-size: .95rem; }
+  <h1>Flour</h1>
+</header>
 
-    .note {
-      border-radius: 18px;
-      padding: 1rem 1.1rem;
-      background: rgba(22,26,34,.75);
-      border: 1px solid rgba(255,255,255,.08);
-    }
-    .note h2 { margin: 0 0 .4rem; font-size: 1.15rem; }
-    .note ul { margin: .5rem 0 0; padding-left: 1.1rem; color: var(--muted); }
+<main>
+  <section aria-labelledby="pastries-title">
+    <h2 id="pastries-title">Pastries</h2>
 
-    nav[aria-label="Menu sections"] {
-      margin: 1.25rem 0 1.75rem;
-      display: flex;
-      flex-wrap: wrap;
-      gap: .5rem;
-      justify-content: center;
-    }
-    nav a {
-      text-decoration: none;
-      color: var(--text);
-      padding: .45rem .75rem;
-      border-radius: 999px;
-      border: 1px solid rgba(255,255,255,.12);
-      background: rgba(255,255,255,.03);
-    }
-    nav a:hover { border-color: rgba(139,233,253,.6); box-shadow: 0 0 0 3px rgba(139,233,253,.12); }
-
-    section {
-      margin: 1.5rem 0;
-      padding: 1.25rem;
-      border-radius: 18px;
-      background: rgba(22,26,34,.7);
-      border: 1px solid rgba(255,255,255,.08);
-    }
-    section h2 { margin: 0 0 .75rem; font-size: 1.6rem; }
-    section > p { margin: 0 0 1rem; color: var(--muted); }
-
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 1rem;
-    }
-    @media (max-width: 720px) {
-      .grid { grid-template-columns: 1fr; }
-    }
-
-    article.menu-item {
-      display: grid;
-      grid-template-columns: 96px 1fr;
-      gap: .9rem;
-      padding: .9rem;
-      border-radius: 16px;
-      background: rgba(255,255,255,.03);
-      border: 1px solid rgba(255,255,255,.08);
-    }
-    article.menu-item h3 { margin: 0; font-size: 1.05rem; }
-    .meta { margin-top: .15rem; color: var(--muted); font-size: .95rem; }
-    .price { font-variant-numeric: tabular-nums; color: var(--accent); font-weight: 650; }
-    .item-top {
-      display: flex;
-      align-items: baseline;
-      justify-content: space-between;
-      gap: .75rem;
-    }
-
-    .thumb {
-      width: 96px; height: 96px;
-      border-radius: 14px;
-      overflow: hidden;
-      border: 1px solid rgba(255,255,255,.10);
-      background: #0b0d12;
-    }
-    .thumb img { width: 100%; height: 100%; object-fit: cover; display:block; }
-
-    footer {
-      padding: 2rem 1.25rem 3rem;
-      text-align: center;
-      color: var(--muted);
-    }
-    footer small { display:block; max-width: 70ch; margin: 0 auto; }
-  </style>
-</head>
-
-<body>
-  <header>
-    <h1>Juniper &amp; Ember</h1>
-    <p>Seasonal small plates, comforting mains, and house-made sweets—served with bright, zero-fuss cocktails and thoughtful pours.</p>
-  </header>
-
-  <main>
-    <div class="hero">
-      <figure>
-        <!-- Replace the src with your own hosted image if you want. -->
-        <img
-          src="https://images.unsplash.com/photo-1529692236671-f1f6cf9683ba?auto=format&fit=crop&w=1600&q=80"
-          alt="A warmly lit restaurant table with shared plates"
-          loading="lazy"
-        />
-        <figcaption>Welcome in—our menu changes with the market, but the favorites stay.</figcaption>
-      </figure>
-
-      <aside class="note" aria-label="Allergy and dining notes">
-        <h2>Dining notes</h2>
-        <ul>
-          <li>Please tell us about allergies—many dishes can be adjusted.</li>
-          <li>Vegetarian &amp; gluten-friendly options available.</li>
-          <li>Ask your server what’s “off-menu” today.</li>
-        </ul>
-      </aside>
-    </div>
-
-    <nav aria-label="Menu sections">
-      <a href="#appetizers">Appetizers</a>
-      <a href="#entrees">Entrees</a>
-      <a href="#desserts">Desserts</a>
-      <a href="#drinks">Drinks</a>
-    </nav>
-
-    <!-- APPETIZERS -->
-    <section id="appetizers" aria-labelledby="appetizers-title">
-      <h2 id="appetizers-title">Appetizers</h2>
-      <p>Easy starters designed for sharing.</p>
-
-      <div class="grid" role="list">
-        <article class="menu-item" role="listitem">
-          <div class="thumb">
-            <img src="https://images.unsplash.com/photo-1541519227354-08fa5d50c44d?auto=format&fit=crop&w=600&q=80"
-                 alt="Roasted carrots on a plate"
-                 loading="lazy" />
-          </div>
-          <div>
-            <div class="item-top">
-              <h3>Charred Carrots &amp; Za’atar Yogurt</h3>
-              <div class="price">$10</div>
-            </div>
-            <p class="meta">Herb oil, toasted seeds, lemon zest.</p>
-          </div>
+    <ul class="menu-list" role="list">
+      <li>
+        <article aria-labelledby="pastry-1">
+          <h3 id="pastry-1">Butter Croissant</h3>
+          <p>Flaky, golden croissant made with rich cultured butter.</p>
+          <p class="price" aria-label="Price">$4.25</p>
+          <p>Gluten Free: No</p>
+          <p>Vegan: No</p>
         </article>
+      </li>
 
-        <article class="menu-item" role="listitem">
-          <div class="thumb">
-            <img src="https://images.unsplash.com/photo-1604908176997-125f25cc500c?auto=format&fit=crop&w=600&q=80"
-                 alt="Crispy calamari with lemon"
-                 loading="lazy" />
-          </div>
-          <div>
-            <div class="item-top">
-              <h3>Crispy Calamari</h3>
-              <div class="price">$13</div>
-            </div>
-            <p class="meta">Citrus aioli, pickled chili, parsley.</p>
-          </div>
+      <li>
+        <article aria-labelledby="pastry-2">
+          <h3 id="pastry-2">Blueberry Muffin</h3>
+          <p>Soft muffin packed with juicy blueberries and sugar crust.</p>
+          <p class="price" aria-label="Price">$3.75</p>
+          <p>Gluten Free: No</p>
+          <p>Vegan: No</p>
         </article>
+      </li>
 
-        <article class="menu-item" role="listitem">
-          <div class="thumb">
-            <img src="https://images.unsplash.com/photo-1543339308-43e59d6b73a6?auto=format&fit=crop&w=600&q=80"
-                 alt="Bruschetta on toasted bread"
-                 loading="lazy" />
-          </div>
-          <div>
-            <div class="item-top">
-              <h3>Tomato Bruschetta</h3>
-              <div class="price">$9</div>
-            </div>
-            <p class="meta">Basil, aged balsamic, grilled sourdough.</p>
-          </div>
+      <li>
+        <article aria-labelledby="pastry-3">
+          <h3 id="pastry-3">Cinnamon Roll</h3>
+          <p>Warm cinnamon swirl topped with vanilla glaze.</p>
+          <p class="price" aria-label="Price">$5.00</p>
+          <p>Gluten Free: No</p>
+          <p>Vegan: No</p>
         </article>
+      </li>
 
-        <article class="menu-item" role="listitem">
-          <div class="thumb">
-            <img src="https://images.unsplash.com/photo-1625944528453-6f7d98ae035a?auto=format&fit=crop&w=600&q=80"
-                 alt="A bowl of soup with herbs"
-                 loading="lazy" />
-          </div>
-          <div>
-            <div class="item-top">
-              <h3>Wild Mushroom Soup</h3>
-              <div class="price">$11</div>
-            </div>
-            <p class="meta">Thyme, crème fraîche, cracked pepper.</p>
-          </div>
+      <li>
+        <article aria-labelledby="pastry-4">
+          <h3 id="pastry-4">Fudgy Brownie</h3>
+          <p>Rich chocolate brownie with soft fudgy center.</p>
+          <p class="price" aria-label="Price">$4.75</p>
+          <p>Gluten Free: Yes</p>
+          <p>Vegan: No</p>
         </article>
+      </li>
+    </ul>
+  </section>
 
-        <article class="menu-item" role="listitem">
-          <div class="thumb">
-            <img src="https://images.unsplash.com/photo-1562967916-eb82221dfb92?auto=format&fit=crop&w=600&q=80"
-                 alt="Shrimp in a garlic sauce"
-                 loading="lazy" />
-          </div>
-          <div>
-            <div class="item-top">
-              <h3>Garlic Butter Shrimp</h3>
-              <div class="price">$14</div>
-            </div>
-            <p class="meta">Smoked paprika, toasted bread, herbs.</p>
-          </div>
+  <section aria-labelledby="breads-title">
+    <h2 id="breads-title">Breads</h2>
+
+    <ul class="menu-list" role="list">
+      <li>
+        <article aria-labelledby="bread-1">
+          <h3 id="bread-1">Sourdough Loaf</h3>
+          <p>Slow-fermented loaf with crisp crust and airy crumb.</p>
+          <p class="price" aria-label="Price">$7.50</p>
+          <p>Gluten Free: No</p>
+          <p>Vegan: Yes</p>
         </article>
-      </div>
-    </section>
+      </li>
 
-    <!-- ENTREES -->
-    <section id="entrees" aria-labelledby="entrees-title">
-      <h2 id="entrees-title">Entrees</h2>
-      <p>Hearty mains with a seasonal twist.</p>
-
-      <div class="grid" role="list">
-        <article class="menu-item" role="listitem">
-          <div class="thumb">
-            <img src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=600&q=80"
-                 alt="Grilled salmon filet"
-                 loading="lazy" />
-          </div>
-          <div>
-            <div class="item-top">
-              <h3>Cedar-Roasted Salmon</h3>
-              <div class="price">$26</div>
-            </div>
-            <p class="meta">Spring greens, dill, lemon brown butter.</p>
-          </div>
+      <li>
+        <article aria-labelledby="bread-2">
+          <h3 id="bread-2">Vegan Banana Bread</h3>
+          <p>Moist banana bread with walnuts and warm spices.</p>
+          <p class="price" aria-label="Price">$4.50</p>
+          <p>Gluten Free: No</p>
+          <p>Vegan: Yes</p>
         </article>
+      </li>
+    </ul>
+  </section>
 
-        <article class="menu-item" role="listitem">
-          <div class="thumb">
-            <img src="https://images.unsplash.com/photo-1604908554027-83510d9c3d1e?auto=format&fit=crop&w=600&q=80"
-                 alt="Steak sliced with sauce"
-                 loading="lazy" />
-          </div>
-          <div>
-            <div class="item-top">
-              <h3>Seared Bistro Steak</h3>
-              <div class="price">$32</div>
-            </div>
-            <p class="meta">Peppercorn jus, fries, arugula salad.</p>
-          </div>
+  <section aria-labelledby="savory-title">
+    <h2 id="savory-title">Savory</h2>
+
+    <ul class="menu-list" role="list">
+      <li>
+        <article aria-labelledby="savory-1">
+          <h3 id="savory-1">Avocado Toast</h3>
+          <p>Seeded bread with smashed avocado and lemon.</p>
+          <p class="price" aria-label="Price">$8.25</p>
+          <p>Gluten Free: No</p>
+          <p>Vegan: Yes</p>
         </article>
+      </li>
+    </ul>
+  </section>
 
-        <article class="menu-item" role="listitem">
-          <div class="thumb">
-            <img src="https://images.unsplash.com/photo-1604909053195-2d5f0da3f8d9?auto=format&fit=crop&w=600&q=80"
-                 alt="A bowl of pasta with cheese"
-                 loading="lazy" />
-          </div>
-          <div>
-            <div class="item-top">
-              <h3>Truffle Cavatelli</h3>
-              <div class="price">$24</div>
-            </div>
-            <p class="meta">Roasted mushrooms, parmesan, black pepper.</p>
-          </div>
+  <section aria-labelledby="beverages-title">
+    <h2 id="beverages-title">Beverages</h2>
+
+    <ul class="menu-list" role="list">
+      <li>
+        <article aria-labelledby="bev-1">
+          <h3 id="bev-1">Vanilla Latte</h3>
+          <p>Espresso with steamed milk and vanilla syrup.</p>
+          <p class="price" aria-label="Price">$5.50</p>
+          <p>Gluten Free: Yes</p>
+          <p>Vegan: No</p>
         </article>
+      </li>
 
-        <article class="menu-item" role="listitem">
-          <div class="thumb">
-            <img src="https://images.unsplash.com/photo-1604908177076-6a2b9b21f1b0?auto=format&fit=crop&w=600&q=80"
-                 alt="Roast chicken with herbs"
-                 loading="lazy" />
-          </div>
-          <div>
-            <div class="item-top">
-              <h3>Lemon-Herb Roast Chicken</h3>
-              <div class="price">$27</div>
-            </div>
-            <p class="meta">Crispy potatoes, pan gravy, charred lemon.</p>
-          </div>
+      <li>
+        <article aria-labelledby="bev-2">
+          <h3 id="bev-2">Cold Brew</h3>
+          <p>Slow-steeped coffee served cold and smooth.</p>
+          <p class="price" aria-label="Price">$4.95</p>
+          <p>Gluten Free: Yes</p>
+          <p>Vegan: Yes</p>
         </article>
+      </li>
 
-        <article class="menu-item" role="listitem">
-          <div class="thumb">
-            <img src="https://images.unsplash.com/photo-1525755662778-989d0524087e?auto=format&fit=crop&w=600&q=80"
-                 alt="Vegetable bowl with grains"
-                 loading="lazy" />
-          </div>
-          <div>
-            <div class="item-top">
-              <h3>Market Veg Grain Bowl</h3>
-              <div class="price">$20</div>
-            </div>
-            <p class="meta">Farro, roasted veg, tahini-lime dressing.</p>
-          </div>
+      <li>
+        <article aria-labelledby="bev-3">
+          <h3 id="bev-3">Spiced Chai Tea</h3>
+          <p>Black tea blended with warming spices.</p>
+          <p class="price" aria-label="Price">$4.50</p>
+          <p>Gluten Free: Yes</p>
+          <p>Vegan: Yes</p>
         </article>
-      </div>
-    </section>
-
-    <!-- DESSERTS -->
-    <section id="desserts" aria-labelledby="desserts-title">
-      <h2 id="desserts-title">Desserts</h2>
-      <p>House-made sweets to finish strong.</p>
-
-      <div class="grid" role="list">
-        <article class="menu-item" role="listitem">
-          <div class="thumb">
-            <img src="https://images.unsplash.com/photo-1542826438-7f0d0f3e5b58?auto=format&fit=crop&w=600&q=80"
-                 alt="Chocolate cake slice"
-                 loading="lazy" />
-          </div>
-          <div>
-            <div class="item-top">
-              <h3>Dark Chocolate Torte</h3>
-              <div class="price">$11</div>
-            </div>
-            <p class="meta">Cocoa nib, whipped cream, sea salt.</p>
-          </div>
-        </article>
-
-        <article class="menu-item" role="listitem">
-          <div class="thumb">
-            <img src="https://images.unsplash.com/photo-1551024601-bec78aea704b?auto=format&fit=crop&w=600&q=80"
-                 alt="Crème brûlée with caramelized top"
-                 loading="lazy" />
-          </div>
-          <div>
-            <div class="item-top">
-              <h3>Vanilla Crème Brûlée</h3>
-              <div class="price">$10</div>
-            </div>
-            <p class="meta">Caramelized sugar crust, berries.</p>
-          </div>
-        </article>
-
-        <article class="menu-item" role="listitem">
-          <div class="thumb">
-            <img src="https://images.unsplash.com/photo-1551106652-a5bcf4b29ab6?auto=format&fit=crop&w=600&q=80"
-                 alt="Cheesecake with fruit"
-                 loading="lazy" />
-          </div>
-          <div>
-            <div class="item-top">
-              <h3>Lemon Ricotta Cheesecake</h3>
-              <div class="price">$11</div>
-            </div>
-            <p class="meta">Citrus curd, almond crumble.</p>
-          </div>
-        </article>
-
-        <article class="menu-item" role="listitem">
-          <div class="thumb">
-            <img src="https://images.unsplash.com/photo-1550317138-10000687a72b?auto=format&fit=crop&w=600&q=80"
-                 alt="Ice cream scoop in a bowl"
-                 loading="lazy" />
-          </div>
-          <div>
-            <div class="item-top">
-              <h3>Brown Butter Gelato</h3>
-              <div class="price">$9</div>
-            </div>
-            <p class="meta">Toasted pecans, caramel drizzle.</p>
-          </div>
-        </article>
-
-        <article class="menu-item" role="listitem">
-          <div class="thumb">
-            <img src="https://images.unsplash.com/photo-1505253213348-ce152ea9a32c?auto=format&fit=crop&w=600&q=80"
-                 alt="Apple tart on a plate"
-                 loading="lazy" />
-          </div>
-          <div>
-            <div class="item-top">
-              <h3>Spiced Apple Tart</h3>
-              <div class="price">$10</div>
-            </div>
-            <p class="meta">Cinnamon, flaky crust, vanilla bean cream.</p>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <!-- DRINKS -->
-    <section id="drinks" aria-labelledby="drinks-title">
-      <h2 id="drinks-title">Drinks</h2>
-      <p>Zero-proof favorites and bright cocktails.</p>
-
-      <div class="grid" role="list">
-        <article class="menu-item" role="listitem">
-          <div class="thumb">
-            <img src="https://images.unsplash.com/photo-1544145945-f90425340c7e?auto=format&fit=crop&w=600&q=80"
-                 alt="Cocktail in a glass with citrus"
-                 loading="lazy" />
-          </div>
-          <div>
-            <div class="item-top">
-              <h3>Juniper Spritz</h3>
-              <div class="price">$12</div>
-            </div>
-            <p class="meta">Gin, grapefruit, soda, rosemary.</p>
-          </div>
-        </article>
-
-        <article class="menu-item" role="listitem">
-          <div class="thumb">
-            <img src="https://images.unsplash.com/photo-1541976076758-347942db197b?auto=format&fit=crop&w=600&q=80"
-                 alt="Iced coffee in a glass"
-                 loading="lazy" />
-          </div>
-          <div>
-            <div class="item-top">
-              <h3>Cold Brew &amp; Vanilla Cream</h3>
-              <div class="price">$6</div>
-            </div>
-            <p class="meta">Slow-steeped coffee, house vanilla.</p>
-          </div>
-        </article>
-
-        <article class="menu-item" role="listitem">
-          <div class="thumb">
-            <img src="https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?auto=format&fit=crop&w=600&q=80"
-                 alt="Sparkling water with lime"
-                 loading="lazy" />
-          </div>
-          <div>
-            <div class="item-top">
-              <h3>Citrus Sparkler (Zero-Proof)</h3>
-              <div class="price">$7</div>
-            </div>
-            <p class="meta">Yuzu, lime, soda, mint.</p>
-          </div>
-        </article>
-
-        <article class="menu-item" role="listitem">
-          <div class="thumb">
-            <img src="https://images.unsplash.com/photo-1556679343-c7306c1976bc?auto=format&fit=crop&w=600&q=80"
-                 alt="Red wine being poured"
-                 loading="lazy" />
-          </div>
-          <div>
-            <div class="item-top">
-              <h3>House Red (Glass)</h3>
-              <div class="price">$10</div>
-            </div>
-            <p class="meta">Medium-bodied, berry-forward.</p>
-          </div>
-        </article>
-
-        <article class="menu-item" role="listitem">
-          <div class="thumb">
-            <img src="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&w=600&q=80"
-                 alt="Cocktail with ice and orange peel"
-                 loading="lazy" />
-          </div>
-          <div>
-            <div class="item-top">
-              <h3>Smoked Old Fashioned</h3>
-              <div class="price">$14</div>
-            </div>
-            <p class="meta">Bourbon, bitters, orange, smoke.</p>
-          </div>
-        </article>
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    <small>
-      Prices and availability may vary by season. Ask about gluten-friendly swaps and vegetarian options.
-    </small>
-  </footer>
-</body>
-</html>
+      </li>
+    </ul>
+  </section>
+</main>
