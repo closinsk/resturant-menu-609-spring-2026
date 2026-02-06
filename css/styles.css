@@ -9,3 +9,30 @@ h1, h2, h3, h4, h5, h6 {
     font-family: 'Playfair Display', serif;
     font-weight: 600;
 }
+
+/* ===== TWO COLUMN MENU LAYOUT ===== */
+
+.menu-layout{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: start;
+}
+
+/* Right column image stack */
+.menu-layout aside{
+    display: grid;
+    gap: 32px;
+}
+
+/* Make images responsive */
+.menu-layout img{
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Remove default figure spacing */
+figure{
+    margin: 0;
+}
