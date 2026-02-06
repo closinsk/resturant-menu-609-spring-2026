@@ -1,6 +1,4 @@
 /* Fonts (you already loaded these in <head>) */
-body { background: hotpink !important; }
-
 
 body{
   font-family: "Lora", serif;
@@ -126,4 +124,5 @@ figcaption{
     gap: 32px;
   }
 }
+
 
