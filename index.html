@@ -2,176 +2,102 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Flour Bakery Menu</title>
-  <meta name="description" content="Explore the menu at Flour featuring breakfast items, baked goods, desserts, and specialty drinks." />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Flour &amp; Honey Menu</title>
 </head>
 
 <body>
-
- <header class="brand-header">
-  <!-- Bread icon goes here -->
-  <img 
-    src="images/bread-icon.svg" 
-    alt="Bread icon logo"
-    class="brand-icon"
-  />
-  <h1 class="brand-title">Flour & Honey</h1>
-  <p class="brand-subtitle">Piekarnia</p>
-</header>
-
+  <header>
+    <!-- Replace src later with your generated icon -->
+    <img src="images/bread-icon.png" alt="Flour &amp; Honey bread icon" width="64" height="64" />
+    <h1>Flour &amp; Honey</h1>
+    <p>Piekarnia</p>
+  </header>
 
   <main>
+    <!-- Two-column layout container (CSS will turn this into columns) -->
+    <section aria-label="Menu layout">
+      <!-- LEFT: Menu text -->
+      <section aria-labelledby="menu-heading">
+        <h2 id="menu-heading">Menu</h2>
 
-    <!-- Breakfast -->
-    <section aria-labelledby="breakfast-heading">
-      <h2 id="breakfast-heading">Breakfast</h2>
+        <section aria-labelledby="breakfast-heading">
+          <h3 id="breakfast-heading">Breakfast</h3>
 
-      <ul role="list">
-        <li>
-          <article>
-            <h3>Butter Croissant</h3>
-            <p>Light, flaky pastry layered with cultured butter.</p>
-            <p><strong>$4.50</strong></p>
-            <p>Gluten Free: No</p>
-            <p>Vegan: No</p>
-          </article>
-        </li>
+          <ul>
+            <li>
+              <span>Croissant</span>
+              <span>$4.50</span>
+            </li>
+            <li>
+              <span>Bagel</span>
+              <span>$3.25</span>
+            </li>
+            <li>
+              <span>Omelette</span>
+              <span>$8.95</span>
+            </li>
+          </ul>
+        </section>
 
-        <li>
-          <article>
-            <h3>Everything Bagel</h3>
-            <p>Chewy bagel topped with seeds, garlic, and sea salt.</p>
-            <p><strong>$3.25</strong></p>
-            <p>Gluten Free: No</p>
-            <p>Vegan: Yes</p>
-          </article>
-        </li>
+        <section aria-labelledby="baked-goods-heading">
+          <h3 id="baked-goods-heading">Baked Goods</h3>
 
-        <li>
-          <article>
-            <h3>Garden Omelette</h3>
-            <p>Egg omelette with peppers, spinach, tomatoes, and herbs.</p>
-            <p><strong>$8.95</strong></p>
-            <p>Gluten Free: Yes</p>
-            <p>Vegan: No</p>
-          </article>
-        </li>
-      </ul>
-    </section>
+          <ul>
+            <li>
+              <span>Fresh Sourdough</span>
+              <span>$7.95</span>
+            </li>
+            <li>
+              <span>Blueberry Muffin</span>
+              <span>$3.95</span>
+            </li>
+            <li>
+              <span>Lemon Cake Slice</span>
+              <span>$5.25</span>
+            </li>
+          </ul>
+        </section>
 
-    <!-- Baked Goods -->
-    <section aria-labelledby="baked-goods-heading">
-      <h2 id="baked-goods-heading">Baked Goods</h2>
+        <section aria-labelledby="desserts-heading">
+          <h3 id="desserts-heading">Desserts</h3>
 
-      <ul role="list">
-        <li>
-          <article>
-            <h3>Rustic Sourdough Bread</h3>
-            <p>Slow-fermented loaf with crisp crust and airy interior.</p>
-            <p><strong>$7.95</strong></p>
-            <p>Gluten Free: No</p>
-            <p>Vegan: Yes</p>
-          </article>
-        </li>
+          <ul>
+            <li>
+              <span>Vanilla Cupcake</span>
+              <span>$4.25</span>
+            </li>
+            <li>
+              <span>Chocolate Chip Cookie</span>
+              <span>$2.75</span>
+            </li>
+            <li>
+              <span>Assorted Cupcakes (3)</span>
+              <span>$11.50</span>
+            </li>
+          </ul>
+        </section>
 
-        <li>
-          <article>
-            <h3>Blueberry Muffin</h3>
-            <p>Moist muffin bursting with fresh blueberries.</p>
-            <p><strong>$3.95</strong></p>
-            <p>Gluten Free: No</p>
-            <p>Vegan: No</p>
-          </article>
-        </li>
+        <section aria-labelledby="drinks-heading">
+          <h3 id="drinks-heading">Specialty Drinks</h3>
 
-        <li>
-          <article>
-            <h3>Lemon Drizzle Cake</h3>
-            <p>Soft sponge cake finished with bright lemon glaze.</p>
-            <p><strong>$5.25</strong></p>
-            <p>Gluten Free: No</p>
-            <p>Vegan: No</p>
-          </article>
-        </li>
-      </ul>
-    </section>
+          <ul>
+            <li>
+              <span>Vanilla Latte</span>
+              <span>$5.75</span>
+            </li>
+            <li>
+              <span>Honey Lavender Latte</span>
+              <span>$6.25</span>
+            </li>
+            <li>
+              <span>Peach Iced Tea</span>
+              <span>$4.50</span>
+            </li>
+          </ul>
+        </section>
+      </section>
 
-    <!-- Desserts -->
-    <section aria-labelledby="desserts-heading">
-      <h2 id="desserts-heading">Desserts</h2>
-
-      <ul role="list">
-        <li>
-          <article>
-            <h3>Vanilla Bean Cupcake</h3>
-            <p>Classic cupcake topped with silky vanilla frosting.</p>
-            <p><strong>$4.25</strong></p>
-            <p>Gluten Free: No</p>
-            <p>Vegan: No</p>
-          </article>
-        </li>
-
-        <li>
-          <article>
-            <h3>Chocolate Chip Cookie</h3>
-            <p>Warm cookie packed with rich chocolate chips.</p>
-            <p><strong>$2.75</strong></p>
-            <p>Gluten Free: No</p>
-            <p>Vegan: No</p>
-          </article>
-        </li>
-
-        <li>
-          <article>
-            <h3>Macarons (Assorted)</h3>
-            <p>Delicate almond cookies with flavored fillings.</p>
-            <p><strong>$6.50</strong></p>
-            <p>Gluten Free: Yes</p>
-            <p>Vegan: No</p>
-          </article>
-        </li>
-      </ul>
-    </section>
-
-    <!-- Specialty Drinks -->
-    <section aria-labelledby="drinks-heading">
-      <h2 id="drinks-heading">Specialty Drinks</h2>
-
-      <ul role="list">
-        <li>
-          <article>
-            <h3>Vanilla Latte</h3>
-            <p>Espresso blended with steamed milk and vanilla.</p>
-            <p><strong>$5.75</strong></p>
-            <p>Gluten Free: Yes</p>
-            <p>Vegan: No</p>
-          </article>
-        </li>
-
-        <li>
-          <article>
-            <h3>Honey Lavender Latte</h3>
-            <p>Floral lavender with honey and smooth espresso.</p>
-            <p><strong>$6.25</strong></p>
-            <p>Gluten Free: Yes</p>
-            <p>Vegan: No</p>
-          </article>
-        </li>
-
-        <li>
-          <article>
-            <h3>Peach Iced Tea</h3>
-            <p>Refreshing iced tea infused with ripe peach.</p>
-            <p><strong>$4.50</strong></p>
-            <p>Gluten Free: Yes</p>
-            <p>Vegan: Yes</p>
-          </article>
-        </li>
-      </ul>
-    </section>
-
-  </main>
-
-</body>
-</html>
+      <!-- RIGHT: Image stack -->
+      <aside aria-label="Featured photos">
+        <figure>
