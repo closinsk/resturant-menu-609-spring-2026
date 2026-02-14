@@ -23,13 +23,11 @@
 
 <main>
   <section class="menu-layout" aria-label="Menu layout">
-      
-    <!-- LEFT COLUMN -->
-    <section aria-labelledby="menu-heading">
-      <h2 id="menu-heading">Our Menu</h2>
+    <h2 id="menu-heading">Our Menu</h2>
 
-      <!-- Pączki -->
-      <section aria-labelledby="paczki-heading">
+    <!-- Pączki row -->
+    <div class="menu-row">
+      <section aria-labelledby="paczki-heading" class="menu-items">
         <h3 id="paczki-heading">Pączki</h3>
         <ul>
           <li><span>Rose Jam Pączki</span><span>$4.50</span></li>
@@ -46,8 +44,16 @@
         </ul>
       </section>
 
-      <!-- Breads -->
-      <section aria-labelledby="bread-heading">
+      <figure class="menu-figure">
+        <img src="images/paczki.png" alt="Pączki pastries" />
+        <div class="img-overlay">Soft fried filled doughnuts—jam, custard, or cream.</div>
+        <figcaption class="label">Pączki</figcaption>
+      </figure>
+    </div>
+
+    <!-- Breads row -->
+    <div class="menu-row">
+      <section aria-labelledby="bread-heading" class="menu-items">
         <h3 id="bread-heading">Breads &amp; Sweet Loaves</h3>
         <ul>
           <li><span>Chałka (Sweet Braided Bread)</span><span>$6.95</span></li>
@@ -63,8 +69,16 @@
         </ul>
       </section>
 
-      <!-- Cakes -->
-      <section aria-labelledby="cakes-heading">
+      <figure class="menu-figure">
+        <img src="images/chalka.png" alt="Chałka braided bread" />
+        <div class="img-overlay">Sweet braided bread, soft crumb—great for tea or toast.</div>
+        <figcaption class="label">Chałka</figcaption>
+      </figure>
+    </div>
+
+    <!-- Cakes row -->
+    <div class="menu-row">
+      <section aria-labelledby="cakes-heading" class="menu-items">
         <h3 id="cakes-heading">Polish Cakes</h3>
         <ul>
           <li><span>Sernik (Polish Cheesecake)</span><span>$5.95</span></li>
@@ -80,8 +94,16 @@
         </ul>
       </section>
 
-      <!-- Drinks -->
-      <section aria-labelledby="drinks-heading">
+      <figure class="menu-figure">
+        <img src="images/sernik.png" alt="Sernik cheesecake" />
+        <div class="img-overlay">Classic Polish cheesecake—rich, creamy, lightly sweetened.</div>
+        <figcaption class="label">Sernik</figcaption>
+      </figure>
+    </div>
+
+    <!-- Drinks row -->
+    <div class="menu-row">
+      <section aria-labelledby="drinks-heading" class="menu-items">
         <h3 id="drinks-heading">Coffee &amp; Tea</h3>
         <ul>
           <li><span>House Drip Coffee</span><span>$3.25</span></li>
@@ -97,30 +119,12 @@
         </ul>
       </section>
 
-    </section>
-
-    <!-- RIGHT COLUMN -->
-    <aside aria-label="Featured Polish pastries">
-      <figure>
-        <img src="images/paczki.png" alt="Pączki pastries" />
-        <figcaption>Pączki</figcaption>
-      </figure>
-
-      <figure>
-        <img src="images/sernik.png" alt="Sernik cheesecake" />
-        <figcaption>Sernik</figcaption>
-      </figure>
-
-      <figure>
-        <img src="images/chalka.png" alt="Chałka braided bread" />
-        <figcaption>Chałka</figcaption>
-      </figure>
-
-      <figure>
+      <figure class="menu-figure">
         <img src="images/szarlotka.png" alt="Szarlotka apple cake" />
-        <figcaption>Szarlotka</figcaption>
+        <div class="img-overlay">Apple crumble cake with warm cinnamon and buttery topping.</div>
+        <figcaption class="label">Szarlotka</figcaption>
       </figure>
-    </aside>
+    </div>
 
   </section>
 </main>

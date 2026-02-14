@@ -1,128 +1,96 @@
-/* Fonts (you already loaded these in <head>) */
+/* Design variables and cottage-core visuals */
+:root{
+  --cream: #f6efe4;
+  --paper: #f3eadc;
+  --ink: #2f2722;
+  --muted: #6e6259;
+  --accent: #8a6b4b;
+  --border: rgba(47,39,34,0.12);
+  --radius: 10px;
+  --gutter: 28px;
+  --max-width: 1100px;
+}
+
+*{box-sizing:border-box}
 
 body{
   font-family: "Lora", serif;
   margin: 0;
-  background: #f6efe4;   /* warm cream like the inspo */
-  color: #2f2722;
-  line-height: 1.55;
+  background-color: var(--cream);
+  color: var(--ink);
+  line-height: 1.58;
+  -webkit-font-smoothing:antialiased;
+  background-image: repeating-linear-gradient(180deg, rgba(0,0,0,0.01) 0 1px, transparent 1px 30px);
 }
 
-/* Center the whole menu like a “card” */
 main{
-  max-width: 1100px;
+  max-width: var(--max-width);
   margin: 40px auto;
-  padding: 40px;
-  background: #f3eadc;   /* paper tone */
+  padding: 36px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.6), rgba(255,255,255,0.5));
+  border-radius: calc(var(--radius) + 6px);
+  border: 1px solid var(--border);
+  box-shadow: 0 14px 35px rgba(45,35,28,0.06);
 }
 
-/* Top brand block */
-header{
-  text-align: center;
-  margin: 30px auto 10px;
-}
+header{ text-align:center; margin: 6px 0 12px }
+header h1{ font-family: "Playfair Display", serif; font-weight:600; margin:0; color:var(--ink); font-size:clamp(1.5rem,3vw,2.4rem)}
+header p{ margin:8px 0 0; letter-spacing:3px; text-transform:uppercase; color:var(--muted); font-size:0.82rem }
 
-header h1{
-  font-family: "Playfair Display", serif;
-  font-weight: 600;
-  letter-spacing: 1px;
-  margin: 0;
-}
+/* Main layout: use stacked rows that are flex containers */
+.menu-layout{ display:flex; flex-direction:column; gap:var(--gutter); margin-top:18px }
 
-header p{
-  margin: 8px 0 0;
-  letter-spacing: 4px;
-  text-transform: uppercase;
-  font-size: 0.9rem;
-  opacity: 0.8;
-}
+.menu-row{ display:flex; gap:28px; align-items:flex-start }
+.menu-items{ flex:1 }
+.menu-figure{ position:relative; flex:0 0 48%; max-width:520px; display:flex; flex-direction:column; align-items:center }
+.menu-figure img{ width:100%; height:auto; border-radius:14px; border:1px solid rgba(0,0,0,0.06); box-shadow:0 10px 30px rgba(45,35,28,0.07); transition:transform .18s ease, box-shadow .18s ease }
+.menu-figure:hover img{ transform:translateY(-6px) scale(1.02); box-shadow:0 22px 46px rgba(45,35,28,0.11) }
 
-/* Two-column layout */
-.menu-layout{
-  display: grid;
-  grid-template-columns: 0.95fr 1.05fr; /* text a bit narrower than images */
-  gap: 60px;
-  align-items: start;
-  margin-top: 30px;
+/* overlay that appears on hover */
+.menu-figure .img-overlay{
+  position:absolute;
+  left:14px;
+  right:14px;
+  bottom:14px;
+  background: rgba(20,12,8,0.62);
+  color: #fff;
+  padding: 10px 12px;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  line-height: 1.25;
+  opacity: 0;
+  transform: translateY(6px);
+  transition:opacity .18s ease, transform .18s ease;
+  pointer-events: none;
 }
+.menu-figure:hover .img-overlay{ opacity:1; transform:none }
 
-/* Left column typography */
-#menu-heading{
-  font-family: "Playfair Display", serif;
-  font-weight: 600;
-  margin: 0 0 18px;
-}
+.menu-figure .label{ margin-top:12px; font-style:italic; color:var(--muted) }
 
-/* Category headings with divider lines (like inspo) */
-.menu-layout section[aria-labelledby] > h3{
-  font-family: "Playfair Display", serif;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  font-size: 1rem;
-  margin: 22px 0 12px;
-  padding-top: 18px;
-  border-top: 1px solid rgba(47,39,34,0.25);
-}
+/* Headings */
+#menu-heading{ font-family: "Playfair Display", serif; font-weight:600; color:var(--accent); margin:0 0 6px; font-size:1.25rem }
+.menu-items h3{ font-family: "Playfair Display", serif; font-weight:600; text-transform:uppercase; letter-spacing:1.6px; font-size:0.95rem; margin:16px 0 10px; padding-top:8px; border-top:1px dashed var(--border) }
 
-/* Lists */
-ul{
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
+ul{ list-style:none; margin:0; padding:0 }
+li{ display:flex; justify-content:space-between; gap:12px; padding:8px 0; color:var(--ink); font-size:0.98rem }
+li span:first-child{ flex:1 }
+li span:last-child{ flex:0 0 auto; white-space:nowrap; color:var(--muted); font-variant-numeric:tabular-nums }
 
-/* Make each menu item align like a menu: name left, price right */
-li{
-  display: flex;
-  gap: 18px;
-  justify-content: space-between;
-  align-items: baseline;
-  padding: 6px 0;
-}
-
-li span:first-child{
-  max-width: 75%;
-}
-
-li span:last-child{
-  white-space: nowrap;
-  font-variant-numeric: tabular-nums;
-}
-
-/* Right column image stack */
-.menu-layout aside{
-  display: grid;
-  gap: 32px;
-}
-
-figure{
-  margin: 0;
-}
-
-.menu-layout aside img{
-  width: 100%;
-  height: auto;
-  display: block;
-}
-
-/* Caption style like the reference */
-figcaption{
-  margin-top: 10px;
-  font-style: italic;
-  opacity: 0.8;
-}
-
-/* Optional: better spacing on small screens */
+/* Responsive: stack image under section on small screens */
 @media (max-width: 900px){
-  main{
-    padding: 24px;
-    margin: 0;
-  }
-  .menu-layout{
-    grid-template-columns: 1fr;
-    gap: 32px;
-  }
+  .menu-row{ flex-direction:column }
+  .menu-figure{ flex:0 0 auto; width:100% }
+  .menu-figure img{ width:100% }
+  main{ padding:22px; margin:12px }
 }
+
+@media (min-width: 1200px){
+  main{ padding:48px }
+  .menu-row{ gap:44px }
+}
+
+/* Small tweaks */
+@media (max-width:480px){ header h1{font-size:1.4rem} li{font-size:0.95rem} }
+
 
 
